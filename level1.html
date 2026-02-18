@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Treasure Hunt</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#111;
+color:white;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:#1e1e1e;
+padding:30px;
+width:400px;
+margin:auto;
+border-radius:10px;
+}
+
+.hidden{display:none;}
+.success{color:lime;}
+.error{color:red;}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🏆 LEVEL 1</h2>
+
+<!-- PUZZLE SECTION -->
+
+<h3>🧩 Puzzle</h3>
+
+<p>Unscramble this word:</p>
+<h2>YRARBIL</h2>
+
+<input type="text" id="puzzleAnswer">
+<br>
+<button onclick="checkPuzzle()">Submit Answer</button>
+
+<p id="puzzleMsg"></p>
+
+<hr>
+
+<!-- CLUE + PASSWORD -->
+
+<div id="clueSection" class="hidden">
+
+<h3>📜 Clue</h3>
+<p>"Where silence speaks louder than words."</p>
+
+<p>Enter password:</p>
+
+<input type="text" id="password">
+<br>
+<button onclick="checkPassword()">Verify</button>
+
+<p id="passMsg"></p>
+
+</div>
+
+<hr>
+
+<!-- JOKE + NEXT QR -->
+
+<div id="nextSection" class="hidden">
+
+<h3>😂 Joke</h3>
+<p>I asked the clock for advice… it said time will tell 😉.</p>
+
+<h3>📱 Next QR</h3>
+
+<!-- Replace with your real QR image -->
+<img src="nextQR.png" width="200">
+
+<p class="success">
+👉 Scan this QR. The password is hidden at the location from the clue.
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+// puzzle answer
+let correctPuzzle="LIBRARY";
+
+function checkPuzzle(){
+
+let ans=document.getElementById("puzzleAnswer").value.toUpperCase();
+
+if(ans===correctPuzzle){
+
+document.getElementById("puzzleMsg").innerHTML="✔ Puzzle solved!";
+document.getElementById("puzzleMsg").className="success";
+
+document.getElementById("clueSection").classList.remove("hidden");
+
+}else{
+
+document.getElementById("puzzleMsg").innerHTML="❌ Try again.";
+document.getElementById("puzzleMsg").className="error";
+
+}
+
+}
+
+// password check
+
+let correctPassword="BOOK123";
+
+function checkPassword(){
+
+let pass=document.getElementById("password").value;
+
+if(pass===correctPassword){
+
+document.getElementById("passMsg").innerHTML="✔ Access Granted!";
+document.getElementById("passMsg").className="success";
+
+document.getElementById("nextSection").classList.remove("hidden");
+
+}else{
+
+document.getElementById("passMsg").innerHTML="😂 Treasure says NO... try again!";
+document.getElementById("passMsg").className="error";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
